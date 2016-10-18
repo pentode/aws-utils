@@ -81,7 +81,7 @@ EB_CONFIG_DOCKER_ENTRYPOINT=`cat $EB_CONFIG_APP_CURRENT/Dockerrun.aws.json | jq 
 [ "$EB_CONFIG_DOCKER_ENTRYPOINT" = "null" ] && EB_CONFIG_DOCKER_ENTRYPOINT=
 [ -n "$EB_CONFIG_DOCKER_ENTRYPOINT" ] && EB_CONFIG_DOCKER_ENTRYPOINT_ARGS=(--entrypoint "$EB_CONFIG_DOCKER_ENTRYPOINT")
 
-eval EB_CONFIG_DOCKER_EXTRA_ARGS=(`cat $EB_CONFIG_APP_CURRENT/Dockerrun.aws.json | jq -r '.DockerArguments' | sed -e 's/^\[//' -e 's/\]//' -e 's/,$//' -e 's/ *"//' -e 's/"$//')
+eval EB_CONFIG_DOCKER_EXTRA_ARGS=(`cat $EB_CONFIG_APP_CURRENT/Dockerrun.aws.json | jq -r '.DockerArguments' | sed -e 's/^\[//' -e 's/\]//' -e 's/,$//' -e 's/ *"//' -e 's/"$//'`)
 [ "$EB_CONFIG_DOCKER_EXTRA_ARGS" = "null" ] && EB_CONFIG_DOCKER_EXTRA_ARGS=()
 
 # run the container
